@@ -38,13 +38,13 @@
                 <h2>Systems Breakdown</h2>
                 <ul style="color: var(--text-secondary); margin-left: 1.25rem; margin-top: 0.5rem;">
                     <li><h3>Procedural Dungeon Generation</h3></li>
-                    <p>To achieve the roguelike experience, I implemented procedurally generated dungeons that creates a unique layout of template rooms and corridors.<br>
-                    I used a grid-based approach with multiple potential starting points and a path-validation check to ensure the layout had a pathway that could lead the player to the final room.<br>
-                    I had to solve the challenge of ensuring connectivity while maintaining variety in the generated layouts, solving issues such as rooms overwriting themselves and rooms blocking the player from progressing</p>
+                    <p><h4>Apporach:</h4>Grid-based algorithm utilising randomised array starting points and template rooms.</p>
+                    <p><h4>Path Validation:</h4>Implemented path-checking logic to guarantee a valid traversal route from the starting point to the final room</p>
+                    <p><h4>Key Challenge:</h4>Prevented room overlapping and solved layout dead-ends that blocked player progression.</p>
                     <li><h3>Enemy Spawning</h3></li>
-                    <p>To increase the level of variety, I added multiple spawn points for enemies, ensuring a dynamic and challenging experience for the player. <br>
-                    To keep it balanced, I placed a cap on the amount of enemies that could spawn at one given time as well as addiing a delay between each enemy spawn.<br>
-                    I had to ensure each spawn point had a valid path to the player at all times so the enemy movement logic was not broken. Furthermore, I had to place these points strategically to ensure the player could not just avoid the enemies completely.</p>
+                    <p><h4>Approach:</h4>Dynamic multi-point spawner designed to ensure a balanced and challenging enemy presence.</p>
+                    <p><h4>Pacing & Caps</h4>Applied a global enemy population cap alongside spawn delays to preserve game balance.</p>
+                    <p><h4>Key Challenge:</h4>Positioned spawn points strategically to avoid exploit zones and force direct engagement with pathfinding AI.</p>
                 </ul>
             </div>
         </div>
@@ -64,7 +64,7 @@ void Start()
     transform.position = startingpositions[randStartpos].position;
     // spawns room at the start point
     Instantiate(rooms[0],transform.position,Quaternion.identity);                                
-    // generates a random integer used in the move function to determine which was the generation will move
+    // generates a random integer used in the move function to determine which direction the generation will move
     direction = Random.Range(1, 6);
     // check if direction is 5, if so increment the downcounter to keep track of how many times the generation has moved down
     if (direction == 5)
