@@ -293,6 +293,10 @@ body {
     color: var(--text-secondary);
 }
 
+pre {
+    white-space: pre-wrap;
+}
+
 /* Responsive adjustments */
 @media (max-width: 600px) {
     .hero h1 {font-size: 2.2rem;}
