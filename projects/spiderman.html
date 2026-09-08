@@ -29,10 +29,7 @@
 
     <section class="section" style="max-width: 900px;">
         <div class="media-preview" style="height: 350px; border-radius: 12px;">
-            <div class="media-placeholder"><video width="100%" height="100%" autoplay loop muted playsinline style="border-radius: 12px;">
-                <source src="../assets/Slimekeeper.mp4" type="video/mp4">
-                Your browser does not support the video tag.
-            </video></div>
+            <div class="media-placeholder"><img src="../assets/Spiderman.gif" alt="Spiderman Swinging Reconstruction" style="border-radius: 12px; width: 100%; height: 100%; object-fit: cover;"></div>
         </div>
 
         <div style="margin-top: 6rem; display: flex; flex-direction: column; gap: 2rem;">
@@ -55,45 +52,10 @@
             <div>
                 <h2>Code Examples</h2>
                 <ul style="color: var(--text-secondary); margin-left: 1.25rem; margin-top: 0.5rem;">
-                    <li><h3>Procedural Dungeon Generation</h3></li>
-                    <code style="display: block; background-color: var(--code-bg); padding: 1rem; border-radius: 8px; overflow-x: auto;">
-                        <pre>
-// Start is called before the first frame update
-void Start()
-{
-    // setting the starting position to a random position on the top row of my grid
-    randStartpos = Random.Range(0, startingpositions.Length);
-    transform.position = startingpositions[randStartpos].position;
-    // spawns room at the start point
-    Instantiate(rooms[0],transform.position,Quaternion.identity);                                
-    // generates a random integer used in the move function to determine which direction the generation will move
-    direction = Random.Range(1, 6);
-    // check if direction is 5, if so increment the downcounter to keep track of how many times the generation has moved down
-    if (direction == 5)
-    {
-        downcounter++;
-    }
-}
-                        </pre>
-                    </code>
-                    <li><h3>Enemy Spawning</h3></li>
-                    <code style="display: block; background-color: var(--code-bg); padding: 1rem; border-radius: 8px; overflow-x: auto;">
-                        <pre>
-void SpawnObject()
-{
-    // ensuring that the max enemies had been spawned and extra are not
-    if (enemycount < maxenemies)
-    {
-        // randomizes where the enemy spawns
-        randomspawnpoint = Random.Range(0, spawnpoints.Length);
-        // enemy spawns at the chosen spawn location
-        GameObject newObject = Instantiate(objecttospawn, spawnpoints[randomspawnpoint]);
-        // increments enemy count by 1
-        enemycount++;
-    }
-}
-                        </pre>
-                    </code>
+                    <li><h3>Sphere Trace & Anchor Point Selection</h3></li>
+                    <img src="../assets/Sphere Trace & Anchor.png" alt="Sphere Trace & Anchor Point Selection Code Example" style="border-radius: 12px; width: 100%; max-width: 800px;">
+                    <li><h3>Swinging Trajectory & Velocity</h3></li>
+                    <img src="../assets/Swing Trajectory & Velocity.png" alt="Swinging Trajectory & Velocity Code Example" style="border-radius: 12px; width: 100%; max-width: 800px;">
                 </ul>
             </div>
         </div>
