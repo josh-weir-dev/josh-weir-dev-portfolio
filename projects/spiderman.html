@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spiderman Swinging Reconstruction | Gameplay Feature</title>
+    <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+
+    <nav class="navbar">
+        <a href="../index.html" class="logo">&larr; Back to Portfolio</a>
+    </nav>
+
+    <main class="hero" style="max-width: 900px;">
+        <span class="badge">Personal Project | Gameplay Feature</span>
+        <h1>Spiderman Swinging Reconstruction</h1>
+        <p class="bio">A physics-driven swinging traversal system, implemented with Unreal Engine 5.8.</p>
+
+        <div class="tags" style="margin: 1.5rem 0;">
+            <span class="tag">C++</span>
+            <span class="tag">Unreal Engine</span>
+        </div>
+
+        <div style="margin: 2rem 0;">
+            <a href="https://github.com/josh-weir-dev/Spiderman-Swinging-Reconstruction" target="_blank" class="contact-btn primary">View Source on GitHub</a>
+        </div>
+    </main>
+
+    <section class="section" style="max-width: 900px;">
+        <div class="media-preview" style="height: 350px; border-radius: 12px;">
+            <div class="media-placeholder"><video width="100%" height="100%" autoplay loop muted playsinline style="border-radius: 12px;">
+                <source src="../assets/Slimekeeper.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video></div>
+        </div>
+
+        <div style="margin-top: 6rem; display: flex; flex-direction: column; gap: 2rem;">
+            <div>
+                <h2>Systems Breakdown</h2>
+                <ul style="color: var(--text-secondary); margin-left: 1.25rem; margin-top: 0.5rem;">
+                    <li><h3>Sphere Trace & Anchor Point Selection</h3></li>
+                    <p><h4>Apporach:</h4>Use the spherical area around the player to detect potential anchor points for swinging.</p>
+                    <p><h4>Fixed-Point Swinging</h4>Attached the player to a fixed point to achieve the swinging motion throughout the air.</p>
+                    <p><h4>Key Challenge:</h4>Ensuring the player attaches to a valid anchor point without attaching to the floor and being brought straight down.</p>
+                    <li><h3>Swing Trajectory & Velocity</h3></li>
+                    <p><h4>Approach:</h4>Implemented a physics-based system that uses vector math to calculate the velocity needed to maintain a swinging trajectory</p>
+                    <p><h4>Launch Velocity</h4>Uses a launch velocity to maintain the player's momentum so they can continue on the swinging motion and not lose momentum when releasing a swing.</p>
+                    <p><h4>Key Challenge:</h4>Ensuring the player does not fall too quickly after releasing a swing. This was fixed by applying a launch velocity after release.</p>
+                </ul>
+            </div>
+        </div>
+
+        <div style="margin-top: 3rem; display: flex; flex-direction: column; gap: 2rem;">
+            <div>
+                <h2>Code Examples</h2>
+                <ul style="color: var(--text-secondary); margin-left: 1.25rem; margin-top: 0.5rem;">
+                    <li><h3>Procedural Dungeon Generation</h3></li>
+                    <code style="display: block; background-color: var(--code-bg); padding: 1rem; border-radius: 8px; overflow-x: auto;">
+                        <pre>
+// Start is called before the first frame update
+void Start()
+{
+    // setting the starting position to a random position on the top row of my grid
+    randStartpos = Random.Range(0, startingpositions.Length);
+    transform.position = startingpositions[randStartpos].position;
+    // spawns room at the start point
+    Instantiate(rooms[0],transform.position,Quaternion.identity);                                
+    // generates a random integer used in the move function to determine which direction the generation will move
+    direction = Random.Range(1, 6);
+    // check if direction is 5, if so increment the downcounter to keep track of how many times the generation has moved down
+    if (direction == 5)
+    {
+        downcounter++;
+    }
+}
+                        </pre>
+                    </code>
+                    <li><h3>Enemy Spawning</h3></li>
+                    <code style="display: block; background-color: var(--code-bg); padding: 1rem; border-radius: 8px; overflow-x: auto;">
+                        <pre>
+void SpawnObject()
+{
+    // ensuring that the max enemies had been spawned and extra are not
+    if (enemycount < maxenemies)
+    {
+        // randomizes where the enemy spawns
+        randomspawnpoint = Random.Range(0, spawnpoints.Length);
+        // enemy spawns at the chosen spawn location
+        GameObject newObject = Instantiate(objecttospawn, spawnpoints[randomspawnpoint]);
+        // increments enemy count by 1
+        enemycount++;
+    }
+}
+                        </pre>
+                    </code>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+</body>
+</html>
